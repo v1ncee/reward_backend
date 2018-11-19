@@ -1,0 +1,12 @@
+{
+  "connectionString": "mongodb://vince:vincetest1@ds155653.mlab.com:55653/rewardsystem",
+  "secret": "37C7A41C9E9780F7E4613DF9005EA98CE58A82A591B790EAE0F843D6D89DDDDD",
+  "permissions": {
+    "admin": [
+      "ADMIN"
+    ],
+    "user": [
+      "USER"
+    ]
+  }
+}
