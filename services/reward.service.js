@@ -7,6 +7,7 @@ const Reward = db.Reward;
 module.exports = {
     getAll,
     getById,
+    getByName,
     create,
     update,
     delete: _delete
@@ -18,6 +19,10 @@ async function getAll() {
 
 async function getById(id) {
     return await Reward.findById(id);
+}
+
+async function getByName(name) {
+    return await Reward.find({name: '/.*' + name + '.*/i'});
 }
 
 async function create(rewardParam) {

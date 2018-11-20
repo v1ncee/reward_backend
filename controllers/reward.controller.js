@@ -6,6 +6,7 @@ const rewardService = require('../services/reward.service');
 router.get('/', getAll);
 router.post('/', create);
 router.get('/:id', getById);
+router.get('/name/:name', getByName);
 router.put('/:id', update);
 router.delete('/:id', _delete);
 
@@ -25,6 +26,12 @@ function create(req, res, next) {
 
 function getById(req, res, next) {
     rewardService.getById(req.params.id)
+        .then(reward => reward ? res.json(reward) : res.sendStatus(404))
+        .catch(err => next(err));
+}
+
+function getByName(req, res, next) {
+    rewardService.getByName(req.params.name)
         .then(reward => reward ? res.json(reward) : res.sendStatus(404))
         .catch(err => next(err));
 }
