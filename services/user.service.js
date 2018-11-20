@@ -2,15 +2,14 @@ const config = require('config.json');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const db = require('_helpers/db');
-const User = db.User;
+var User = require('../models/user.model');
+
+// users hardcoded for simplicity, store in a db for production applications
 
 module.exports = {
     authenticate,
-    getAll,
-    getById,
     create,
-    update,
-    delete: _delete
+    getAll
 };
 
 async function authenticate({ username, password }) {
@@ -23,14 +22,6 @@ async function authenticate({ username, password }) {
             token
         };
     }
-}
-
-async function getAll() {
-    return await User.find().select('-hash');
-}
-
-async function getById(id) {
-    return await User.findById(id).select('-hash');
 }
 
 async function create(userParam) {
@@ -50,26 +41,11 @@ async function create(userParam) {
     await user.save();
 }
 
-async function update(id, userParam) {
-    const user = await User.findById(id);
-
-    // validate
-    if (!user) throw 'User not found';
-    if (user.username !== userParam.username && await User.findOne({ username: userParam.username })) {
-        throw 'Username "' + userParam.username + '" is already taken';
-    }
-
-    // hash password if it was entered
-    if (userParam.password) {
-        userParam.hash = bcrypt.hashSync(userParam.password, 10);
-    }
-
-    // copy userParam properties to user
-    Object.assign(user, userParam);
-
-    await user.save();
+async function getAll() {
+    return users.map(u => {
+        const { password, ...userWithoutPassword } = u;
+        return userWithoutPassword;
+    });
 }
 
-async function _delete(id) {
-    await User.findByIdAndRemove(id);
-}
+
