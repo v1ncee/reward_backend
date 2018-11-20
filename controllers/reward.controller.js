@@ -1,6 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const rewardService = require('../services/reward.service');
+const jwt = require('_helpers/jwt');
+const errorHandler = require('_helpers/error-handler');
+const httpMsgs = require('http-msgs');
+const jwtLogin = require('jwt-login');
+const roles = require("user-groups-roles");
+
+
 
 // routes
 router.get('/', getAll);
