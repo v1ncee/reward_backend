@@ -5,7 +5,6 @@ const rewardService = require('../services/reward.service');
 // routes
 router.get('/', getAll);
 router.post('/', create);
-
 router.get('/:id', getById);
 router.put('/:id', update);
 router.delete('/:id', _delete);
