@@ -7,7 +7,8 @@ const schema = new Schema({
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
     points: { type: Number, default: 0 },
-    role: { type: String, default: "user" }
+    role: { type: String, default: "user" },
+    purchases: {type: Array, "default" : []}
 });
 
 schema.set('toJSON', { virtuals: true });
