@@ -5,18 +5,20 @@ const ClaimExercise = db.ClaimExercise;
 module.exports = {
     getAll,
     getById,
-    create,
+    create
 };
 
 async function getAll() {
     return await ClaimExercise.find()
-        .populate('user', ['firstName', 'lastName', 'username', 'points'])
+        //.aggregate()
+        // returns a claimexercise object containing a user with their respective details 'username' & 'points'
+        .populate('user', ['username', 'points', 'lastName'])
         .populate('exercise');
 }
 
 async function getById(id) {
     return await ClaimExercise.findById(id)
-        .populate('user', ['firstName', 'lastName', 'username', 'points'])
+        .populate('user', ['username', 'points', 'lastName'])
         .populate('exercise');
 }
 
