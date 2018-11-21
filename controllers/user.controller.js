@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const userService = require('../services/user.service');
+const permissions = require('../_helpers/permissions');
 
 // routes
 router.post('/authenticate', authenticate);
@@ -44,6 +45,10 @@ function getById(req, res, next) {
 }
 
 function update(req, res, next) {
+    if (permissions.check(req, "admin")) {
+        return permissions.throw(res);
+    }
+
     userService.update(req.params.id, req.body)
         .then(() => res.json({}))
         .catch(err => next(err));
