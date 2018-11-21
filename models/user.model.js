@@ -13,6 +13,12 @@ const schema = new Schema({
     role: { type: String, default: "user" },
     purchases: [ {
         type: Schema.Types.ObjectId, ref: 'Reward'
+    } ],
+    exercises: [ {
+        type: Schema.Types.ObjectId, ref: 'Exercise',
+        claimed: {
+            type: Boolean
+        }
     } ]
 });
 
