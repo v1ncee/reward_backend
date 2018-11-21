@@ -12,7 +12,6 @@ router.delete('/:id', _delete);
 module.exports = router;
 
 function create(req, res, next) {
-
     if (permissions.check(req, "admin")) {
         return permissions.throw(res);
     }
@@ -24,18 +23,17 @@ function create(req, res, next) {
 
 function getAll(req, res, next) {
     exerciseService.getAll()
-        .then(tasks => res.json(tasks))
+        .then(exercises => res.json(exercises))
         .catch(err => next(err));
 }
 
 function getById(req, res, next) {
     exerciseService.getById(req.params.id)
-        .then(task => task ? res.json(task) : res.sendStatus(404))
+        .then(exercise => exercise ? res.json(exercise) : res.sendStatus(404))
         .catch(err => next(err));
 }
 
 function update(req, res, next) {
-
     if (permissions.check(req, "admin")) {
         return permissions.throw(res);
     }
@@ -46,7 +44,6 @@ function update(req, res, next) {
 }
 
 function _delete(req, res, next) {
-
     if (permissions.check(req, "admin")) {
         return permissions.throw(res);
     }

@@ -8,5 +8,5 @@ function check(req, permissions) {
 }
 
 function error(res) {
-    return res.send("denied");
+    return res.send("Permission denied");
 }

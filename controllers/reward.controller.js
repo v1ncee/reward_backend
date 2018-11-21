@@ -20,7 +20,6 @@ function getAll(req, res, next) {
 }
 
 function create(req, res, next) {
-
     if (permissions.check(req, "admin")) {
         return permissions.throw(res);
     }
@@ -43,7 +42,6 @@ function getByName(req, res, next) {
 }
 
 function update(req, res, next) {
-
     if (permissions.check(req, "admin")) {
         return permissions.throw(res);
     }
@@ -54,7 +52,6 @@ function update(req, res, next) {
 }
 
 function _delete(req, res, next) {
-
     if (permissions.check(req, "admin")) {
         return permissions.throw(res);
     }

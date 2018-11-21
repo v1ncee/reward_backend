@@ -1,6 +1,3 @@
-const config = require('config.json');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
 const db = require('_helpers/db');
 const Reward = db.Reward;
 
@@ -33,10 +30,8 @@ async function create(rewardParam) {
 async function update(id, rewardParam) {
     const reward = await Reward.findById(id);
 
-    // validate
     if (!reward) throw 'Reward not found';
 
-    // copy userParam properties to user
     Object.assign(reward, rewardParam);
 
     await reward.save();

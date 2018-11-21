@@ -27,7 +27,6 @@ function authenticate(req, res, next) {
 }
 
 function getAll(req, res, next) {
-
     if (permissions.check(req, "admin")) {
         return permissions.throw(res);
     }

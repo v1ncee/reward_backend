@@ -13,7 +13,6 @@ router.delete('/:id', _delete);
 module.exports = router;
 
 function create(req, res, next) {
-
     if (permissions.check(req, "admin")) {
         return permissions.throw(res);
     }
@@ -36,7 +35,6 @@ function getById(req, res, next) {
 }
 
 function update(req, res, next) {
-
     if (permissions.check(req, "admin")) {
         return permissions.throw(res);
     }
@@ -47,7 +45,6 @@ function update(req, res, next) {
 }
 
 function _delete(req, res, next) {
-
     if (permissions.check(req, "admin")) {
         return permissions.throw(res);
     }
