@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const rewardService = require('../services/reward.service');
+const permissions = require('../_helpers/permissions');
 
 // routes
 router.get('/', getAll);
@@ -19,6 +20,11 @@ function getAll(req, res, next) {
 }
 
 function create(req, res, next) {
+
+    if (permissions.check(req, "admin")) {
+        return permissions.throw(res);
+    }
+    
     rewardService.create(req.body)
         .then(reward => res.json(reward))
         .catch(err => next(err));
@@ -37,12 +43,22 @@ function getByName(req, res, next) {
 }
 
 function update(req, res, next) {
+
+    if (permissions.check(req, "admin")) {
+        return permissions.throw(res);
+    }
+
     rewardService.update(req.params.id, req.body)
         .then(() => res.json({}))
         .catch(err => next(err));
 }
 
 function _delete(req, res, next) {
+
+    if (permissions.check(req, "admin")) {
+        return permissions.throw(res);
+    }
+
     rewardService.delete(req.params.id)
         .then(() => res.json({
             "succes": true
