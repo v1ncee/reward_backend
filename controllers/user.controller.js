@@ -27,6 +27,11 @@ function authenticate(req, res, next) {
 }
 
 function getAll(req, res, next) {
+
+    if (permissions.check(req, "admin")) {
+        return permissions.throw(res);
+    }
+
     userService.getAll()
         .then(users => res.json(users))
         .catch(err => next(err));
@@ -55,6 +60,11 @@ function update(req, res, next) {
 }
 
 function _delete(req, res, next) {
+
+    if (permissions.check(req, "admin")) {
+        return permissions.throw(res);
+    }
+
     userService.delete(req.params.id)
         .then(() => res.json({}))
         .catch(err => next(err));

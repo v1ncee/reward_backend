@@ -12,6 +12,11 @@ router.delete('/:id', _delete);
 module.exports = router;
 
 function create(req, res, next) {
+
+    if (permissions.check(req, "admin")) {
+        return permissions.throw(res);
+    }
+
     exerciseService.create(req.body)
         .then(() => res.json({}))
         .catch(err => next(err));
@@ -30,12 +35,22 @@ function getById(req, res, next) {
 }
 
 function update(req, res, next) {
+
+    if (permissions.check(req, "admin")) {
+        return permissions.throw(res);
+    }
+
     exerciseService.update(req.params.id, req.body)
         .then(() => res.json({}))
         .catch(err => next(err));
 }
 
 function _delete(req, res, next) {
+
+    if (permissions.check(req, "admin")) {
+        return permissions.throw(res);
+    }
+
     exerciseService.delete(req.params.id)
         .then(() => res.json({}))
         .catch(err => next(err));
