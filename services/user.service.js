@@ -68,11 +68,15 @@ async function update(id, userParam) {
         userParam.hash = bcrypt.hashSync(userParam.password, 10);
     }
 
+    
+
     // copy userParam properties to user
     Object.assign(user, userParam);
 
     await user.save();
 }
+
+
 
 async function _delete(id) {
     await User.findByIdAndRemove(id);
