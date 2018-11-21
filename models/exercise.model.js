@@ -7,6 +7,7 @@ const schema = new Schema({
     description: { type: String, required: true },
     points: { type: Number, required: true },
     reviewed: { type: Boolean, default: false },
+    comment: { type: String, default: ""}
 });
 
 schema.set('toJSON', { virtuals: true });

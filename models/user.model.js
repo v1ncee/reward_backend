@@ -10,9 +10,15 @@ const schema = new Schema({
     lastName: { type: String, required: true },
     createdDate: { type: Date, default: Date.now },
     points: { type: Number, default: 0 },
-    role: { type: String, default: "user" },
+    role: { type: String, required: true, default: "user" },
     purchases: [ {
         type: Schema.Types.ObjectId, ref: 'Reward'
+    } ],
+    exercises: [ {
+        type: Schema.Types.ObjectId, ref: 'Exercise',
+        claimed: {
+            type: Boolean
+        }
     } ]
 });
 
