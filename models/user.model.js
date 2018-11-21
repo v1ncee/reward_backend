@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-var RewardSchema = require('../models/exercise.model').schema;
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
@@ -10,13 +9,9 @@ const schema = new Schema({
     lastName: { type: String, required: true },
     createdDate: { type: Date, default: Date.now },
     points: { type: Number, default: 0 },
-    role: { type: String, required: true, default: "user" },
+    role: { type: String, default: "user" },
     purchases: [ {
         type: Schema.Types.ObjectId, ref: 'Reward'
-    } ],
-    exercises: [ {
-        id: { type: Schema.Types.ObjectId, ref: 'Exercise' },
-        claimed: { type: Boolean },
     } ]
 });
 

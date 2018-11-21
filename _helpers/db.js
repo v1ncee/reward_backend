@@ -7,4 +7,5 @@ module.exports = {
     User: require('../models/user.model'),
     Exercise: require('../models/exercise.model'),
     Reward: require('../models/reward.model'),
+    ClaimExercise: require('../models/claim_exercise.model'),
 };

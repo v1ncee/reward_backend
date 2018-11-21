@@ -17,6 +17,7 @@ app.use(jwt());
 app.use('/users', require('./controllers/user.controller'));
 app.use('/exercises', require('./controllers/exercise.controller'));
 app.use('/rewards', require('./controllers/reward.controller'));
+app.use('/claimexercise', require('./controllers/claim_exercise.controller'));
 
 // global error handler
 app.use(errorHandler);

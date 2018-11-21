@@ -24,7 +24,7 @@ async function create(exParam) {
 
     const exercise = new Exercise(exParam);
 
-    // save task
+    // save exercise
     await exercise.save();
 }
 
@@ -34,7 +34,6 @@ async function update(id, exParam) {
     // validate
     if (!exercise) throw 'Exercise not found';
 
-    // copy taskParam properties to task
     Object.assign(exercise, exParam);
 
     await exercise.save();
