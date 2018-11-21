@@ -10,7 +10,7 @@ module.exports = {
 
 async function getAll() {
     return await ClaimExercise.find()
-        //.aggregate()
+        //https://www.youtube.com/watch?v=3p0wmR973Fw
         // returns a claimexercise object containing a user with their respective details 'username' & 'points'
         .populate('user', ['username', 'points', 'lastName'])
         .populate('exercise');
