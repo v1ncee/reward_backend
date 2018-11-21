@@ -5,6 +5,7 @@ const schema = new Schema({
     _id: Schema.Types.ObjectId,
     title: { type: String, required: true },
     description: { type: String, required: true },
+    image: { type: String, required: true },
     points: { type: Number, default: 0 }
 });
 

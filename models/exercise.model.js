@@ -7,6 +7,7 @@ const schema = new Schema({
     description: { type: String, required: true },
     points: { type: Number, required: true },
     reviewed: { type: Boolean, default: false },
+    image: { type: String, required: true },
     comment: { type: String, default: ""}
 });
 
