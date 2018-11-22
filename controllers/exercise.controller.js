@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const exerciseService = require('../services/exercise.service');
+const permissions = require('../_helpers/permissions');
+
 
 // routes
 router.post('/', create);
