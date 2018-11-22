@@ -19,8 +19,7 @@ async function getById(id) {
 
 async function create(exParam) {
     const exercise = new Exercise(exParam);
-
-    await exercise.save();
+    return await exercise.save();
 }
 
 async function update(id, exParam) {
