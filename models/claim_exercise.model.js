@@ -8,7 +8,7 @@ const schema = new Schema({
     comment: { type: String, required: true },
     status: {
         type: String,
-        enum : ['OPEN', 'CLAIMED', 'NOT-CLAIMED'],
+        enum : ['PENDING', 'CLAIMED', 'NOT-CLAIMED'],
         default: 'NOT-CLAIMED'
     }
 });
