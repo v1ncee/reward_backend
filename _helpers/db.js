@@ -8,4 +8,5 @@ module.exports = {
     Exercise: require('../models/exercise.model'),
     Reward: require('../models/reward.model'),
     ClaimExercise: require('../models/claim_exercise.model'),
+    UserReward: require('../models/user_reward.model'),
 };

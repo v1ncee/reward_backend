@@ -27,7 +27,7 @@ async function create(userId, claimExerciseParam) {
 
     const claimExercise = new ClaimExercise(claimExerciseParam);
     claimExercise._id = new mongoose.Types.ObjectId();
-    claimExercise.status = 'OPEN';
+    claimExercise.status = 'PENDING';
 
     await claimExercise.save();
 }

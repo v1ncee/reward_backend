@@ -18,6 +18,7 @@ app.use('/users', require('./controllers/user.controller'));
 app.use('/exercises', require('./controllers/exercise.controller'));
 app.use('/rewards', require('./controllers/reward.controller'));
 app.use('/claimexercise', require('./controllers/claim_exercise.controller'));
+app.use('/userreward', require('./controllers/user_reward.controller'));
 
 // global error handler
 app.use(errorHandler);
