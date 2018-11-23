@@ -8,7 +8,8 @@ const schema = new Schema({
     lastName: { type: String, required: true },
     createdDate: { type: Date, default: Date.now },
     points: { type: Number, default: 0 },
-    leaderBoardPoints: { type: Number, default: 0 }, 
+    leaderBoardPoints: { type: Number, default: 0 },
+    leaderBoardMonth: { type: Number, default: 0 },
     role: { type: String, default: "user" },
     purchases: [ {
         type: Schema.Types.ObjectId, ref: 'Reward'
