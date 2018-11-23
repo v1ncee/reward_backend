@@ -19,7 +19,7 @@ function create(req, res, next) {
     }
 
     exerciseService.create(req.body)
-        .then(() => res.json({}))
+        .then(exercise => res.json(exercise))
         .catch(err => next(err));
 }
 
