@@ -5,6 +5,7 @@ const UserReward = db.UserReward;
 module.exports = {
     getAll,
     getById,
+    getByUserId,
     create
 };
 
@@ -19,6 +20,12 @@ async function getAll() {
 async function getById(id) {
     return await UserReward.findById(id)
         .populate('user', ['username', 'points', 'lastName'])
+        .populate('reward');
+}
+
+async function getByUserId(id) {
+    return await UserReward.find(id)
+        .populate('user', ['username', 'points', 'lastName', ])
         .populate('reward');
 }
 

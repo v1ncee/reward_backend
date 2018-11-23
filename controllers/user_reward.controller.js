@@ -30,6 +30,12 @@ function getById(req, res, next) {
         .catch(err => next(err));
 }
 
+function getByUserId(req, res, next) {
+    userRewardService.getById(req.params.user)
+        .then(claim => claim ? res.json(claim) : res.sendStatus(404))
+        .catch(err => next(err));
+}
+
 function update(req, res, next) {
     if (permissions.check(req, "admin")) {
         return permissions.throw(res);
