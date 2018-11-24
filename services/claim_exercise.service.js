@@ -5,6 +5,7 @@ const ClaimExercise = db.ClaimExercise;
 module.exports = {
     getAll,
     getById,
+    update,
     create
 };
 
@@ -20,6 +21,16 @@ async function getById(id) {
     return await ClaimExercise.findById(id)
         .populate('user', ['username', 'points', 'lastName'])
         .populate('exercise');
+}
+
+async function update(id, exParam) {
+    const claimExercise = await ClaimExercise.findById(id);
+
+    if (!claimExercise) throw 'Exercise not found';
+
+    Object.assign(claimExercise, exParam);
+
+    await claimExercise.save();
 }
 
 async function create(userId, claimExerciseParam) {

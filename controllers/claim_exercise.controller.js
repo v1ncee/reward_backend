@@ -13,10 +13,6 @@ router.delete('/:id', _delete);
 module.exports = router;
 
 function create(req, res, next) {
-    if (permissions.check(req, "admin")) {
-        return permissions.throw(res);
-    }
-
     claimExerciseService.create(req.user.sub, req.body)
         .then(() => res.json({}))
         .catch(err => next(err));
