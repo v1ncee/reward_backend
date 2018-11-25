@@ -30,7 +30,7 @@ async function create(rewardParam) {
 async function update(id, rewardParam) {
     const reward = await Reward.findById(id);
 
-    if (!reward) throw 'Reward not found';
+        if (!reward) throw 'Reward not found';
 
     Object.assign(reward, rewardParam);
     await reward.save();

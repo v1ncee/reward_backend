@@ -25,7 +25,7 @@ async function create(exParam) {
 async function update(id, exParam) {
     const exercise = await Exercise.findById(id);
 
-    if (!exercise) throw 'Exercise not found';
+        if (!exercise) throw 'Exercise not found';
 
     Object.assign(exercise, exParam);
     await exercise.save();
