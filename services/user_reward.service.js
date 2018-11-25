@@ -34,6 +34,5 @@ async function create(userId, userRewardParam) {
 
     const userReward = new UserReward(userRewardParam);
     userReward._id = new mongoose.Types.ObjectId();
-
     await userReward.save();
 }

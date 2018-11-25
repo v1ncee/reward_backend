@@ -33,7 +33,6 @@ async function update(id, rewardParam) {
     if (!reward) throw 'Reward not found';
 
     Object.assign(reward, rewardParam);
-
     await reward.save();
 }
 

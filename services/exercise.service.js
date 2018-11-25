@@ -28,7 +28,6 @@ async function update(id, exParam) {
     if (!exercise) throw 'Exercise not found';
 
     Object.assign(exercise, exParam);
-
     await exercise.save();
 }
 

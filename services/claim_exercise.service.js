@@ -12,7 +12,7 @@ module.exports = {
 async function getAll() {
     return await ClaimExercise.find()
         //https://www.youtube.com/watch?v=3p0wmR973Fw
-        // returns a claimexercise object containing a user with their respective details 'username' & 'points'
+        // returns a claimexercise object containing a user with their respective details 'username', 'points' & 'lastName'
         .populate('user', ['username', 'points', 'lastName'])
         .populate('exercise');
 }
@@ -26,10 +26,9 @@ async function getById(id) {
 async function update(id, exParam) {
     const claimExercise = await ClaimExercise.findById(id);
 
-    if (!claimExercise) throw 'Exercise not found';
+        if (!claimExercise) throw 'Exercise not found';
 
     Object.assign(claimExercise, exParam);
-
     await claimExercise.save();
 }
 
