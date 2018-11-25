@@ -6,7 +6,8 @@ module.exports = {
     getAll,
     getById,
     update,
-    create
+    create,
+	delete: _delete
 };
 
 async function getAll() {
@@ -41,4 +42,8 @@ async function create(userId, claimExerciseParam) {
     claimExercise.status = 'PENDING';
 
     await claimExercise.save();
+}
+
+async function _delete(id) {
+	await ClaimExercise.findByIdAndRemove(id);
 }
